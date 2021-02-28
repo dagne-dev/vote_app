@@ -66,22 +66,12 @@ class PartyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Election App',
-          // theme: ThemeData(
-          //   scaffoldBackgroundColor: Colors.white,
-          //   fontFamily: "Muli",
-          //   textTheme: TextTheme(
-          //     bodyText1: TextStyle(color: KTextColor),
-          //     bodyText2: TextStyle(color: KTextColor),
-          //   ),
-          //   visualDensity: VisualDensity.adaptivePlatformDensity,
-          // ),
           theme: new ThemeData(
+            visualDensity: VisualDensity.adaptivePlatformDensity,
             primaryColor: Color.fromRGBO(58, 66, 86, 1.0),
             fontFamily: "Muli",
           ),
           onGenerateRoute: PartyAppRoute.generateRoute,
-          // initialRoute: SplashScreen.routeName,
-          // routes: routes,
         ),
       ),
     );

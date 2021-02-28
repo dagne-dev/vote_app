@@ -78,7 +78,7 @@ class PartyVoteProgress extends StatelessWidget {
                   ),
                   subtitle: Expanded(
                     child: Text(
-                      'Vote: ${parties[index].vote}',
+                      'Current Vote: ${parties[index].vote}',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
