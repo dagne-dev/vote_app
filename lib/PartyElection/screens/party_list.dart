@@ -6,6 +6,7 @@ import 'package:main_project/PartyElection/bloc/bloc.dart';
 import 'package:main_project/PartyElection/screens/party_add_update.dart';
 import 'package:main_project/PartyElection/screens/party_detail.dart';
 import 'package:main_project/PartyElection/screens/party_route.dart';
+import 'package:main_project/PartyElection/screens/screens.dart';
 import 'package:main_project/components/constants.dart';
 
 class PartyList extends StatelessWidget {

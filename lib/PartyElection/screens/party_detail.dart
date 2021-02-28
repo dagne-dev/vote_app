@@ -44,7 +44,8 @@ class PartyDetail extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.delete),
               onPressed: () {
-                context.read<PartyBloc>().add(PartyDelete(this.party));
+                context.read<PartyBloc>().add(PartyDelete(this
+                    .party)); ///////////////////////////////////////////////
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     PartyList.routeName, (route) => false);
               }),
@@ -95,6 +96,16 @@ class PartyDetail extends StatelessWidget {
             ),
           ),
           Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: ListTile(
+              leading: Icon(Icons.how_to_vote_sharp),
+              title: Text(
+                'Vote: ${this.party.vote}',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+              ),
+            ),
+          ),
+          Padding(
             padding: EdgeInsets.only(top: 25),
             child: Text("Detailed Description",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
@@ -102,64 +113,46 @@ class PartyDetail extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 25, left: 20, right: 20),
-            child: Text('${this.party.hpr}'),
-          )
+            child: Text('${this.party.description}'),
+          ),
+          Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: BlocBuilder<VoteBloc, bool>(
+                builder: (ctx, fav) => FloatingActionButton(
+                    child: fav
+                        ? Icon(
+                            Icons.how_to_vote_rounded,
+                            color: Colors.black,
+                          )
+                        : Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                          ),
+                    onPressed: () {
+                      fav
+                          ? context.read<PartyBloc>().add(PartyUpdate(Party(
+                                id: this.party.id,
+                                description: this.party.description,
+                                headQuarter: this.party.headQuarter,
+                                hpr: this.party.hpr,
+                                partyLeader: this.party.partyLeader,
+                                partyName: this.party.partyName,
+                                vote: this.party.vote + 1,
+                              )))
+                          : context.read<PartyBloc>().add(PartyUpdate(Party(
+                                id: this.party.id,
+                                description: this.party.description,
+                                headQuarter: this.party.headQuarter,
+                                hpr: this.party.hpr,
+                                partyLeader: this.party.partyLeader,
+                                partyName: this.party.partyName,
+                                vote: this.party.vote,
+                              )));
+                      context.read<VoteBloc>().add(VoteEvent.vote);
+                    }),
+              ))
         ],
       ),
-      // body: Card(
-      //   color: Color.fromRGBO(58, 66, 86, 1.0),
-      //   child: Column(
-      //     children: [
-      //       ListTile(
-      //         title: Text(
-      //           'Party Name: ${this.party.partyName}',
-      //           style: TextStyle(color: Colors.white70, fontSize: 18.0),
-      //         ),
-      //         subtitle: Text(
-      //           'Leader: ${this.party.partyLeader}',
-      //           style: TextStyle(color: Colors.white70, fontSize: 16.0),
-      //         ),
-      //       ),
-      //       Column(
-      //         children: [
-      //           Text(
-      //             'HPR Members: ${this.party.hpr}',
-      //             style: TextStyle(color: Colors.white70, fontSize: 15.0),
-      //           ),
-      //           Text(
-      //             'Region: ${this.party.headQuarter}',
-      //             style: TextStyle(color: Colors.black),
-      //           ),
-      //           // Text(
-      //           //   'Name: ${this.party.partyName}',
-      //           //   style: TextStyle(color: Colors.black),
-      //           // ),
-      //           // Text(
-      //           //   'Name: ${this.party.partyName}',
-      //           //   style: TextStyle(color: Colors.black),
-      //           // ),
-      //         ],
-      //       ),
-      //       Padding(
-      //         padding: EdgeInsets.only(top: 35),
-      //         child: Text(
-      //           'Details',
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //             fontWeight: FontWeight.bold,
-      //           ),
-      //         ),
-      //       ),
-      //       SizedBox(
-      //         height: 10,
-      //       ),
-      //       Text(
-      //         this.party.description,
-      //         style: TextStyle(color: Colors.black87),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
