@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main_project/Home/NavigationDrawer_screens/progress.dart';
 import 'package:main_project/PartyElection/bloc/vote_bool_bloc/vote_bool.dart';
-import 'package:main_project/PartyElection/bloc/vote_change_bloc/vote_change.dart';
 import 'package:main_project/PartyElection/models/models.dart';
 import 'package:main_project/PartyElection/party_election.dart';
 import 'package:main_project/PartyElection/screens/Parties_Vote_progress.dart';
-import 'package:main_project/components/constants.dart';
 import 'package:main_project/components/size_config.dart';
 
 class PartyDetail extends StatelessWidget {

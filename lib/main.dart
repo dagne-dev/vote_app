@@ -3,17 +3,13 @@ import 'package:main_project/ElectionInfo/bloc/bloc.dart';
 import 'package:main_project/ElectionInfo/election_info.dart';
 import 'package:main_project/PartyElection/bloc/vote_bool_bloc/vote_bool.dart';
 import 'package:main_project/PartyElection/bloc/vote_change_bloc/vote_change.dart';
-// import 'package:main_project/Home/splash/splash_screen.dart';
-import 'package:main_project/components/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:main_project/components/routes.dart';
 import 'package:http/http.dart' as http;
 import 'package:main_project/PartyElection/party_election.dart';
 import 'bloc_observer.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-
   final PartyRepository partyRepository = PartyRepository(
     dataProvider: PartyDataProvider(
       httpClient: http.Client(),

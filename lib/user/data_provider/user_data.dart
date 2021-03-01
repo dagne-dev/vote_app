@@ -18,11 +18,10 @@ class UserDataProvider {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'fullName': user.fullName,
+        'name': user.name,
         'age': user.age,
         'region': user.region,
         'email': user.email,
-        'image': user.image,
         'password': user.password,
         'id': user.id,
       }),
@@ -66,17 +65,16 @@ class UserDataProvider {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, dynamic>{
-        'fullName': user.fullName,
+        'name': user.name,
         'age': user.age,
         'region': user.region,
         'email': user.email,
-        'image': user.image,
         'password': user.password,
         'id': user.id,
       }),
     );
 
-    if (response.statusCode != 204) {
+    if (response.statusCode != 200) {
       throw Exception('Failed to update user.');
     }
   }
